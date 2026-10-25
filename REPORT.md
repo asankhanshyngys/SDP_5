@@ -45,21 +45,21 @@ classDiagram
 
 ## 3 Clean code principles
 
-### Classes should be small
+### Chapter 9 Unit Tests — Single concept per test
 
-Each strategy has one short method. For example, `AddStrategy` contains only
-the addition algorithm, so its behavior can be understood immediately.
+Each test checks one behavior: addition, subtraction, multiplication, or runtime
+strategy switching. Tests create their own calculator and have one assertion,
+so they do not depend on shared state or execution order. This keeps failures
+easy to understand. The tests use a small assertion helper with no libraries.
 
 ```java
-public class AddStrategy implements OperationStrategy {
-    @Override
-    public double execute(double firstNumber, double secondNumber) {
-        return firstNumber + secondNumber; // One small algorithm.
-    }
+private static void addsTwoNumbers() {
+    Calculator calculator = new Calculator(new AddStrategy());
+    assertEquals(15.0, calculator.calculate(10, 5)); // Checks only addition.
 }
 ```
 
-### Single Responsibility Principle
+### Chapter 10 Classes — Single Responsibility Principle
 
 Each class has one responsibility. Strategies perform arithmetic, `Calculator`
 delegates execution, and `Main` configures the strategies and prints the demo.
@@ -72,18 +72,20 @@ public double calculate(double firstNumber, double secondNumber) {
 }
 ```
 
-### Cohesion
+### Chapter 11 Systems — Separate construction from use
 
-The calculator's methods work with the same private strategy field. The
-constructor initializes it through `setStrategy`, the setter replaces it,
-and `calculate` uses it. These methods support the same focused purpose.
+`Main` constructs the concrete strategies and supplies them to `Calculator`.
+The calculator only uses the supplied interface and does not create its own
+arithmetic algorithms. Passing the strategy through the constructor or setter
+is a simple form of dependency injection; no framework is needed.
 
 ```java
-private OperationStrategy strategy;
+// Main constructs and supplies the concrete algorithm.
+Calculator calculator = new Calculator(new AddStrategy());
 
-public void setStrategy(OperationStrategy strategy) {
-    // Update the same field used by calculate.
-    this.strategy = Objects.requireNonNull(strategy, "Strategy is required");
+// Calculator uses the supplied algorithm through the interface.
+public double calculate(double firstNumber, double secondNumber) {
+    return strategy.execute(firstNumber, secondNumber);
 }
 ```
 

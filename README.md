@@ -30,7 +30,20 @@ Expected output:
 - `src/AddStrategy.java`, `src/SubtractStrategy.java`, `src/MultiplyStrategy.java`: algorithms.
 - `src/Calculator.java`: context that delegates to the selected strategy.
 - `src/Main.java`: client that switches strategies at runtime.
-- `REPORT.md`: reflection, UML diagram, and three clean code principles.
+- `tests/CalculatorTest.java`: four independent tests with one concept each.
+- `REPORT.md`: reflection, UML diagram, and one clean code principle from each
+  of Chapters 9, 10, and 11.
+
+## Tests
+
+Run from the project folder:
+
+```sh
+javac --release 17 -d out src/*.java tests/*.java
+java -cp out CalculatorTest
+```
+
+Expected output: `All 4 tests passed.`
 
 ## Submission
 
