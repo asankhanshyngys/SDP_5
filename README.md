@@ -31,8 +31,9 @@ Expected output:
 - `src/Calculator.java`: context that delegates to the selected strategy.
 - `src/Main.java`: client that switches strategies at runtime.
 - `tests/CalculatorTest.java`: four independent tests with one concept each.
-- `REPORT.md`: reflection, UML diagram, and one clean code principle from each
+- `REPORT.docx`: Word report with UML and one clean code principle from each
   of Chapters 9, 10, and 11.
+- `REPORT.md`: editable Markdown version of the reflection.
 
 ## Tests
 
@@ -49,7 +50,8 @@ Expected output: `All 4 tests passed.`
 
 The folder includes a local Git repository with incremental commits. Publish
 it to your GitHub repository, then replace the repository link placeholder in
-`REPORT.md` before submitting. The report's Mermaid diagram renders on GitHub.
+`REPORT.docx` before submitting. The Markdown version also contains a Mermaid
+diagram that renders on GitHub.
 
 ## Defense notes
 
