@@ -48,10 +48,8 @@ Expected output: `All 4 tests passed.`
 
 ## Submission
 
-The folder includes a local Git repository with incremental commits. Publish
-it to your GitHub repository, then replace the repository link placeholder in
-`REPORT.docx` before submitting. The Markdown version also contains a Mermaid
-diagram that renders on GitHub.
+The folder includes a local Git repository with incremental commits and the
+Word report. The Markdown version also contains a Mermaid diagram.
 
 ## Defense notes
 

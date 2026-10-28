@@ -138,6 +138,3 @@ This flexibility adds several small classes. For a basic calculator that is
 extra structure, but it clearly demonstrates how Strategy separates algorithms
 from the object that uses them.
 
-## 5 GitHub repository
-
-Repository link: **Add the GitHub URL after publishing this project.**
