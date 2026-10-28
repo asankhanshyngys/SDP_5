@@ -3,6 +3,8 @@
 A small Java calculator demonstrating the Strategy pattern with addition,
 subtraction, and multiplication. No external libraries are needed.
 
+Repository: [asankhanshyngys/SDP_5](https://github.com/asankhanshyngys/SDP_5)
+
 ## Run
 
 Requires JDK 17 or newer. Run these commands from the project folder:
