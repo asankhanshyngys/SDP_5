@@ -45,7 +45,9 @@ classDiagram
 
 ## 3 Clean code principles
 
-### Chapter 9 Unit Tests — Single concept per test
+The implementation applies five principles from Chapters 9, 10, and 11.
+
+### Principle 1 Single concept per test from Chapter 9
 
 Each test checks one behavior: addition, subtraction, multiplication, or runtime
 strategy switching. Tests create their own calculator and have one assertion,
@@ -59,7 +61,7 @@ private static void addsTwoNumbers() {
 }
 ```
 
-### Chapter 10 Classes — Single Responsibility Principle
+### Principle 2 Single Responsibility Principle from Chapter 10
 
 Each class has one responsibility. Strategies perform arithmetic, `Calculator`
 delegates execution, and `Main` configures the strategies and prints the demo.
@@ -72,7 +74,42 @@ public double calculate(double firstNumber, double secondNumber) {
 }
 ```
 
-### Chapter 11 Systems — Separate construction from use
+### Principle 3 Cohesion from Chapter 10
+
+The methods in `Calculator` work with the same private strategy field. The
+constructor initializes it through `setStrategy`, the setter updates it, and
+`calculate` uses it. These related methods belong together because they support
+the calculator's focused responsibility. No unrelated data or behavior is added.
+
+```java
+private OperationStrategy strategy; // Shared state for the related methods.
+
+public void setStrategy(OperationStrategy strategy) {
+    this.strategy = Objects.requireNonNull(strategy, "Strategy is required");
+}
+
+public double calculate(double firstNumber, double secondNumber) {
+    return strategy.execute(firstNumber, secondNumber); // Uses the same field.
+}
+```
+
+### Principle 4 Isolating from change from Chapter 10
+
+`Calculator` depends on the `OperationStrategy` interface, so a change to an
+arithmetic implementation does not require changing the context. For example,
+division can be added by implementing this interface in a new class and selecting
+it in `Main`. The existing context and strategies stay unchanged. The client
+still needs to configure the new operation.
+
+```java
+// The context depends on the contract, not a concrete arithmetic class.
+private OperationStrategy strategy;
+
+// Every algorithm supplies this same interface method.
+double execute(double firstNumber, double secondNumber);
+```
+
+### Principle 5 Separate construction from use from Chapter 11
 
 `Main` constructs the concrete strategies and supplies them to `Calculator`.
 The calculator only uses the supplied interface and does not create its own

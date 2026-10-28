@@ -31,8 +31,8 @@ Expected output:
 - `src/Calculator.java`: context that delegates to the selected strategy.
 - `src/Main.java`: client that switches strategies at runtime.
 - `tests/CalculatorTest.java`: four independent tests with one concept each.
-- `REPORT.docx`: Word report with UML and one clean code principle from each
-  of Chapters 9, 10, and 11.
+- `REPORT.docx`: Word report with UML and five clean code principles drawn
+  from Chapters 9, 10, and 11, each justified with an annotated code excerpt.
 - `REPORT.md`: editable Markdown version of the reflection.
 
 ## Tests
